@@ -1,0 +1,302 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Serif Georgian', serif;
+    
+    
+}
+
+
+.forside{
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)),url(Museumbilder/Museum.jpeg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    
+    
+}
+
+nav{
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    padding: 2% 6%;
+    justify-content: space-between;
+    align-items: center;
+}
+nav img{
+    width: 150px;
+}
+
+.meny{
+    flex: 1;
+    text-align: left;
+
+}
+.meny ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+.meny ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+.meny ul li::after{
+    content: "";
+    width: 0%;
+    height: 2px;
+    background: #ffffff;
+    display: block;
+    margin: auto;
+    transition: 0.8s;
+}
+.meny ul li:hover::after{
+    width: 100%;
+
+}
+
+.meny a.active {
+    background-color: #ff3e3e;
+    color: white;
+  }
+
+.overskrift{
+    width: 90%;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+
+}
+
+.overskrift h1{
+    font-size: 60px;
+}
+.overskrift p{
+    margin: 10px 0 40px;
+    font-size: 15px;
+    color: white;
+}
+
+.textboks{
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    padding: 15px 40px;
+    font-size: 13px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+}
+
+/*---Gjør at tekstboksen blir hvit når musepekeren er over---*/
+.textboks:hover{
+    color: black;
+    border: 1px solid #000;
+    background: #ffffff;
+    transition: 1s;
+}
+
+
+h1{
+    margin-top: 30px;
+    font-size: 70px;
+}
+
+/*---- COLLECTION -----*/
+
+.bildegalleri{
+    width: 80%;
+    margin: 100px auto 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+}
+
+.bildegalleri img{
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: pointer;
+    transform: scale(1);
+    transition: 0.3s ease-in-out;
+
+}
+
+.bildegalleri img:hover{
+    transform: scale(1.08);
+    
+}
+
+.overskriftgallery{
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    
+}
+
+.Toppen{
+    text-align: center;
+    font-size: 20px;
+    
+    
+}
+
+.Toppen a{
+    color: white;
+}
+
+.Toppen a:hover{
+    color: red;
+    transition: 1s;
+
+}
+
+
+.åpningstider{
+    color: #000000;
+    margin-left: 25px;
+    margin-top: 100px;
+    display: inline-block;
+    text-align: center;
+    font-size: 25px;
+    background-color: black;
+    
+    
+}
+
+th{
+    background-color: #18A558;
+    
+    padding: 10px;
+}
+
+td{
+    background-color: beige;
+    padding: 10px;
+ 
+}
+
+.Kinleyinfo{
+    float: right;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 40px;
+    margin-top: 50px;
+    background-image: url(https://t4.ftcdn.net/jpg/04/21/08/53/360_F_421085379_3MQlfQNYJ33nMk6qLk3laEQ5JWyXflxY.jpg);
+    position: relative;
+    right: 280px;
+    
+    
+}
+
+
+.Kinleyinfo2{
+    float: right;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 40px;
+    margin-top: 50px;
+    background-image: url(https://t4.ftcdn.net/jpg/04/21/08/53/360_F_421085379_3MQlfQNYJ33nMk6qLk3laEQ5JWyXflxY.jpg);
+    position: relative;
+    right: 280px;
+    
+    
+}
+
+.forsideshop{
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)),url(Museumbilder/Insidemuseum2.jpeg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    
+    
+}
+#tr1 td {
+    background-color: black;
+
+}
+
+.card {
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin-left: 50px;
+    margin-top: 150px;
+    float: left;
+    text-align: center;
+    font-family: arial;
+    border: 3px solid white;
+  }
+
+.card img:hover{
+    transform: scale(1.03);
+    transition: 0.5s ease-in-out;
+}
+
+  
+.price {
+    color: grey;
+    font-size: 22px;
+  }
+  
+.card button {
+    border: none;
+    outline: 0;
+    padding: 13px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+
+.card button a{
+    color: white;
+    text-decoration: none;
+}
+  
+.card button:hover {
+    opacity: 0.7;
+  }
+
+
+.Error{
+    margin: 0px;
+    min-height: 100vh;
+    width: 100%;
+    background-image: url(Museumbilder/Hacker\ backroudn.gif);
+    
+
+}
+
+.Error h1{
+    
+    text-align: center;
+    font-size: 200px;
+    color: white;
+    
+}
+
+.Error h2{
+    text-align: center;
+    font-size: 60px;
+    color: white;
+    
+}
+
+.body1{
+    background-color: black;
+}
+  
+
