@@ -24,6 +24,7 @@ nav{
     padding: 2% 6%;
     justify-content: space-between;
     align-items: center;
+    
 }
 nav img{
     width: 150px;
@@ -236,6 +237,7 @@ td{
     text-align: center;
     font-family: arial;
     border: 3px solid white;
+    
   }
 
 .card img:hover{
