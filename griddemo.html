@@ -44,7 +44,7 @@ html {
     }
     section div:hover{
         transform: scale(1.1);
-        border: 1px solid rgb(255, 0, 0);
+        
         
     }
 
@@ -54,7 +54,7 @@ html {
         margin: 50px;
         display: grid;
         grid-gap: 2px;
-        grid-template-columns: repeat(18,1fr);
+        grid-template-columns: repeat(18, minmax(10px, 1fr));
         
         
        
@@ -93,8 +93,8 @@ html {
     .section2{
         display:grid;
         gap: 4px;
-        grid-template-columns: repeat(18,1fr);
-        grid-template-rows: repeat(2,1fr);
+        grid-template-columns: repeat(18, minmax(10px, 1fr));
+        grid-template-rows: repeat(2, minmax(10px, 1fr));
         margin-left: 10%;
         
     }
