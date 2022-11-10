@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LottoOttoPlottoMotto</title>
+</head>
+<body>
+    
+    <h1>Loddtrekning</h1>
+    <input type="Number" placeholder="Antall solgte" id="inpAntallTall">
+    <input type="Number" placeholder="Mitt valg" id="inpMittvalg">
+    <button id="btnVelgVinner">Klikk for resultat</button>
+    <h1 id="txtResultat"></h1>
+
+    
+    <script>
+        inpAntallTall = document.getElementById("inpAntallTall")
+        btnVelgVinner = document.getElementById("btnVelgVinner")
+        inpMittvalg = document.getElementById("inpMittvalg")
+        txtResultat = document.getElementById("txtResultat")
+        var antallTall;
+        var mittValg;
+        var vinnerTall;
+
+ 
+        btnVelgVinner.onclick = function() {
+            antallTall = Number(inpAntallTall.value);
+            mittValg = Number (inpMittvalg.value)
+            vinnerTall = parseInt((Math.random()*antallTall)+1)
+            if(mittValg == vinnerTall){
+                txtResultat.innerHTML = ("Vinnerloddet er " + vinnerTall + " du vant!")
+            }
+
+            else{
+                txtResultat.innerHTML = ("Du vant ikke fordi vinnertallet er " + vinnerTall)
+            }
+
+
+        }
+
+        
+    </script>
+    <style>
+
+        body{
+            background-color: rgb(18, 18, 18);
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        h1{
+            color: aliceblue;
+            font-size: 60px;
+        }
+
+        input{
+            font-size: 30px;
+            border-radius: 5px;
+        }
+
+        button{
+            font-size: 30px;
+            border-radius: 5px;
+        }
+
+        button:hover{
+            background-color: rgb(124, 36, 36);
+            color: white;
+            transition: 0.5s;
+        }
+
+    </style>
+</body>
+</html>
