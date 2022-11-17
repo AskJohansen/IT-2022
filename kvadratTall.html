@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kvadrattall</title>
+</head>
+
+<body>
+    <div class="eirik">
+        <div>
+        <input type="number" placeholder="Skriv inn tall" id="kvadrat">
+        <button id="btnCheck" onclick="kvadrat(document.getElementById('kvadrat').value)">Check</button>
+        <p id="txtSvar"></p>
+        </div>
+    </div>
+
+    <script>
+        //Oppgave 2
+
+        function kvadrat(a) {
+            txtSvar.innerHTML = ("Kvadrattallet er: " + a ** 2)
+        }
+    </script>
+</body>
+
+<style>
+    :root {
+            --gradient: linear-gradient(90deg, yellow , red , yellow)
+        }
+
+        body {
+            background-size: 300%;
+            background-image: var(--gradient);
+            animation: bakgrunnAnimasjon 20s infinite;
+            background-repeat: none;
+        }
+
+        @keyframes bakgrunnAnimasjon {
+            0% {
+                background-position: left;
+            }
+
+            25% {
+                background-position: right;
+            }
+
+            50% {
+                background-position: left;
+            }
+
+            100% {
+                background-position: right;
+            }
+
+
+        }
+
+
+        .eirik {
+            color: white;
+            font-size: 50px;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+</style>
+
+</html>

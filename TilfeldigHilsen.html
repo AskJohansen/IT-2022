@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+</head>
+
+<body>
+    <div class="eirik">
+        <div>
+            <button id="btnCheck" onclick="tilfeldigHilsen()">Klikk for en hilsen</button>
+            <p id="textSvar"></p>
+            <img height="300px" src="https://i.gifer.com/origin/f5/f5baef4b6b6677020ab8d091ef78a3bc.gif" alt="">
+            <img height="300px" src="https://i.pinimg.com/originals/99/ae/f1/99aef119bc7972d95af475b81c545d3b.gif" alt="">
+            <img height="300px" src="https://cdn.streamlabs.com/users/34345707/library/twerk%20santa-199.gif" alt="">
+        </div>
+    </div>
+
+  
+
+    <script>
+
+        //Oppgave 1
+
+        btnCheck = document.getElementById("btnCheck");
+
+        function tilfeldigHilsen() {
+
+            var randoom = Math.floor(Math.random() * 3);
+            console.log(randoom);
+
+            if (randoom == 0) {
+                document.getElementById("textSvar").innerHTML = "Hei";
+
+            }
+
+            else if (randoom == 1) {
+                document.getElementById("textSvar").innerHTML = "Hallo";
+            }
+
+            else {
+                document.getElementById("textSvar").innerHTML = "God dag";
+            }
+        }
+
+
+
+
+    </script>
+
+    <style>
+        :root {
+            --gradient: linear-gradient(90deg, red, black, blue)
+        }
+
+        body {
+            background-size: 300%;
+            background-image: var(--gradient);
+            animation: bakgrunnAnimasjon 20s infinite;
+            background-repeat: none;
+        }
+
+        @keyframes bakgrunnAnimasjon {
+            0% {
+                background-position: left;
+            }
+
+            25% {
+                background-position: right;
+            }
+
+            50% {
+                background-position: left;
+            }
+
+            100% {
+                background-position: right;
+            }
+
+
+        }
+
+
+        .eirik {
+            color: white;
+            font-size: 50px;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+    </style>
+</body>
+
+</html>
