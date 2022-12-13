@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Yatziiii</title>
+
+
+</head>
+
+
+<style>
+    .hitTheGriddy {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        font-family: monospace;
+    }
+
+    .thBakrunn {
+        color: white;
+        background-color: rgb(83, 83, 255);
+        border: 2px solid white;
+        text-shadow: 1px 0px 0px black;
+    }
+
+    td {
+        padding: 8px;
+        background-color: transparent;
+        border: 2px solid white;
+        width: 200px;
+        color: white;
+        font-weight: bolder;
+        text-shadow: 1px 0px 0px black;
+    }
+
+    th {
+        padding: 8px;
+        background-color: transparent;
+        border: 2px solid white;
+        overflow: hidden;
+        max-width: 100px;
+        min-width: 100px;
+    }
+
+    #terningNr1 {
+        height: 30px;
+        width: 30px;
+        font-size: larger;
+        text-align: center;
+        margin-left: 10px;
+    }
+
+    #terningNr2 {
+        height: 30px;
+        width: 30px;
+        font-size: larger;
+        text-align: center;
+        margin-left: 10px;
+    }
+
+    #terningNr3 {
+        height: 30px;
+        width: 30px;
+        font-size: larger;
+        text-align: center;
+        margin-left: 10px;
+    }
+
+    #terningNr4 {
+        height: 30px;
+        width: 30px;
+        font-size: larger;
+        text-align: center;
+        margin-left: 10px;
+    }
+
+    #terningNr5 {
+        height: 30px;
+        width: 30px;
+        font-size: larger;
+        text-align: center;
+        margin-left: 10px;
+    }
+
+    #lagreStyle {
+        margin: 10px;
+        padding-inline: 20px;
+        font-family: monospace;
+        font-size: 10px;
+        background-color: rgb(83, 83, 255);
+        color: white;
+
+    }
+
+    #btnCheck {
+        margin: 10px;
+        padding-inline: 20px;
+        font-family: monospace;
+        font-size: 20px;
+        background-color: rgb(83, 83, 255);
+        color: white;
+
+    }
+
+    input {
+        width: 25px;
+        margin-left: 14px;
+
+    }
+
+    html {
+        height: 100%;
+    }
+
+    body {
+        margin: 10px;
+
+    }
+
+    h1 {
+        font-family: monospace;
+        font-size: 100px;
+        position: absolute;
+        left: 60%;
+        top: 32%;
+        text-shadow: 7px 1px 0px rgb(255, 255, 255);
+    }
+
+    h1:hover {
+        letter-spacing: 20px;
+        transition: ease-in-out 0.8s;
+
+    }
+
+    /* ------- Animasjon ------*/
+
+    .bg {
+        animation: bakgrunnAnimasjon 3s ease-in-out infinite alternate;
+        background-image: linear-gradient(-60deg, rgb(132, 0, 255) 50%, #09f 50%);
+        bottom: 0;
+        left: -50%;
+        opacity: .5;
+        position: fixed;
+        right: -50%;
+        top: 0;
+        z-index: -1;
+    }
+
+    .bg2 {
+        animation-direction: alternate-reverse;
+        animation-duration: 4s;
+    }
+
+    .bg3 {
+        animation-duration: 5s;
+    }
+
+    @keyframes bakgrunnAnimasjon {
+        0% {
+            transform: translateX(-25%);
+        }
+
+        100% {
+            transform: translateX(25%);
+        }
+    }
+</style>
+
+
+<body>
+
+    <h1>YATZY</h1>
+    <!-- Kast-knapen, lagrenavn-knappen og de fire boksene for å skrive inn navnet sitt-->
+    <button id="btnCheck" onclick="kast()">KAST</button>
+    <input type="text" style="width: 100px;" placeholder="Skriv inn spiller 1" id="input1">
+    <input type="text" style="width: 100px;" placeholder="Skriv inn spiller 2" id="input2">
+    <input type="text" style="width: 100px;" placeholder="Skriv inn spiller 3" id="input3">
+    <input type="text" style="width: 100px;" placeholder="Skriv inn spiller 4" id="input4">
+    <button id="lagreStyle" onclick="navnLagre()">Lagre</button>
+
+    <br>
+    <!-- Terningene -->
+    <button id="terningNr1"></button>
+    <button id="terningNr2"></button>
+    <button id="terningNr3"></button>
+    <button id="terningNr4"></button>
+    <button id="terningNr5"></button>
+
+    <br>
+    <!-- checkboxene under terningene -->
+    <input type="checkbox" id="checkBox1" onclick="byttFarge()">
+    <input type="checkbox" id="checkBox2" onclick="byttFarge()">
+    <input type="checkbox" id="checkBox3" onclick="byttFarge()">
+    <input type="checkbox" id="checkBox4" onclick="byttFarge()">
+    <input type="checkbox" id="checkBox5" onclick="byttFarge()">
+
+
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+
+
+
+
+    <div class="hitTheGriddy">
+        <table>
+            <thead class="thBakrunn">
+                <th class="deltagere">Deltagere</th>
+                <th class="deltagere"></th>
+                <th class="deltagere"> </th>
+                <th class="deltagere"> </th>
+                <th class="deltagere"> </th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="thBakrunn rad1">Enere</td>
+                    <td class="rad1" onclick="settTallEnTilSeks(1, 1)"> </td>
+                    <td class="rad1" onclick="settTallEnTilSeks(1, 2)"> </td>
+                    <td class="rad1" onclick="settTallEnTilSeks(1, 3)"> </td>
+                    <td class="rad1" onclick="settTallEnTilSeks(1, 4)"> </td>
+                </tr>
+                <tr>
+                    <td class="thBakrunn rad2">Toere</td>
+                    <td class="rad2" onclick="settTallEnTilSeks(2, 1)"> </td>
+                    <td class="rad2" onclick="settTallEnTilSeks(2, 2)"> </td>
+                    <td class="rad2" onclick="settTallEnTilSeks(2, 3)"> </td>
+                    <td class="rad2" onclick="settTallEnTilSeks(2, 4)"> </td>
+                </tr>
+                <tr>
+                    <td class="thBakrunn rad3">Treere</td>
+                    <td class="rad3" onclick="settTallEnTilSeks(3, 1)"> </td>
+                    <td class="rad3" onclick="settTallEnTilSeks(3, 2)"> </td>
+                    <td class="rad3" onclick="settTallEnTilSeks(3, 3)"> </td>
+                    <td class="rad3" onclick="settTallEnTilSeks(3, 4)"> </td>
+                </tr>
+                <tr>
+                    <td class="thBakrunn rad4">Firere</td>
+                    <td class="rad4" onclick="settTallEnTilSeks(4, 1)"> </td>
+                    <td class="rad4" onclick="settTallEnTilSeks(4, 2)"> </td>
+                    <td class="rad4" onclick="settTallEnTilSeks(4, 3)"> </td>
+                    <td class="rad4" onclick="settTallEnTilSeks(4, 4)"> </td>
+
+                </tr>
+                <tr>
+                    <td class="thBakrunn rad5">Femmere</td>
+                    <td class="rad5" onclick="settTallEnTilSeks(5, 1)"> </td>
+                    <td class="rad5" onclick="settTallEnTilSeks(5, 2)"> </td>
+                    <td class="rad5" onclick="settTallEnTilSeks(5, 3)"> </td>
+                    <td class="rad5" onclick="settTallEnTilSeks(5, 4)"> </td>
+                </tr>
+                <tr>
+                    <td class="thBakrunn rad6">Seksere</td>
+                    <td class="rad6" onclick="settTallEnTilSeks(6, 1)"> </td>
+                    <td class="rad6" onclick="settTallEnTilSeks(6, 2)"> </td>
+                    <td class="rad6" onclick="settTallEnTilSeks(6, 3)"> </td>
+                    <td class="rad6" onclick="settTallEnTilSeks(6, 4)"> </td>
+                </tr>
+                <tr class="thBakrunn">
+                    <td class="rad7">Sum</td>
+                    <td class="rad7" onclick=""> </td>
+                    <td class="rad7" onclick=""> </td>
+                    <td class="rad7" onclick=""> </td>
+                    <td class="rad7" onclick=""> </td>
+                </tr>
+                <tr class="thBakrunn">
+                    <td class="rad8">Bonus</td>
+                    <td class="rad8" onclick=""> </td>
+                    <td class="rad8" onclick=""> </td>
+                    <td class="rad8" onclick=""> </td>
+                    <td class="rad8" onclick=""> </td>
+                </tr>
+                <tr>
+                    <td class="thBakrunn rad9">Ett par</td>
+                    <td class="rad9" onclick="ettPar(1)"> </td>
+                    <td class="rad9" onclick="ettPar(2)"> </td>
+                    <td class="rad9" onclick="ettPar(3)"> </td>
+                    <td class="rad9" onclick="ettPar(4)"> </td>
+                </tr>
+                <tr>
+                    <td class="thBakrunn rad10">To par</td>
+                    <td class="rad10" onclick="toPar(1)"> </td>
+                    <td class="rad10" onclick="toPar(2)"> </td>
+                    <td class="rad10" onclick="toPar(3)"> </td>
+                    <td class="rad10" onclick="toPar(4)"> </td>
+                </tr>
+                <tr>
+                    <td class="thBakrunn rad11">Tre like</td>
+                    <td class="rad11" onclick=""> </td>
+                    <td class="rad11" onclick=""> </td>
+                    <td class="rad11" onclick=""> </td>
+                    <td class="rad11" onclick=""> </td>
+                </tr>
+                <tr>
+                    <td class="thBakrunn rad12">Fire like</td>
+                    <td class="rad12" onclick=""> </td>
+                    <td class="rad12" onclick=""> </td>
+                    <td class="rad12" onclick=""> </td>
+                    <td class="rad12" onclick=""> </td>
+                </tr>
+                <tr>
+                    <td class="thBakrunn rad13">Liten straight</td>
+                    <td class="rad13" onclick=""> </td>
+                    <td class="rad13" onclick=""> </td>
+                    <td class="rad13" onclick=""> </td>
+                    <td class="rad13" onclick=""> </td>
+                </tr>
+                <tr>
+                    <td class="thBakrunn rad14">Stor straight</td>
+                    <td class="rad14" onclick=""> </td>
+                    <td class="rad14" onclick=""> </td>
+                    <td class="rad14" onclick=""> </td>
+                    <td class="rad14" onclick=""> </td>
+                </tr>
+                <tr>
+                    <td class="thBakrunn rad15">Hus</td>
+                    <td class="rad15" onclick=""> </td>
+                    <td class="rad15" onclick=""> </td>
+                    <td class="rad15" onclick=""> </td>
+                    <td class="rad15" onclick=""> </td>
+                </tr>
+                <tr>
+                    <td class="thBakrunn rad16">Sjanse</td>
+                    <td class="rad16" onclick=""> </td>
+                    <td class="rad16" onclick=""> </td>
+                    <td class="rad16" onclick=""> </td>
+                    <td class="rad16" onclick=""> </td>
+                </tr>
+                <tr>
+                    <td class="thBakrunn rad17">Yatzy</td>
+                    <td class="rad17" onclick=""> </td>
+                    <td class="rad17" onclick=""> </td>
+                    <td class="rad17" onclick=""> </td>
+                    <td class="rad17" onclick=""> </td>
+                </tr>
+                <tr class="thBakrunn">
+                    <td class="rad18">Totalt</td>
+                    <td class="rad18" onclick=""> </td>
+                    <td class="rad18" onclick=""> </td>
+                    <td class="rad18" onclick=""> </td>
+                    <td class="rad18" onclick=""> </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <script>
+
+        // Variablene til classene i tabellen
+
+        var rad0 = document.getElementsByClassName("deltagere");
+        var rad1 = document.getElementsByClassName("rad1");
+        var rad2 = document.getElementsByClassName("rad2");
+        var rad3 = document.getElementsByClassName("rad3");
+        var rad4 = document.getElementsByClassName("rad4");
+        var rad5 = document.getElementsByClassName("rad5");
+        var rad6 = document.getElementsByClassName("rad6");
+        var rad7 = document.getElementsByClassName("rad7");
+        var rad8 = document.getElementsByClassName("rad8");
+        var rad9 = document.getElementsByClassName("rad9");
+        var rad10 = document.getElementsByClassName("rad10");
+        var rad11 = document.getElementsByClassName("rad11");
+        var rad12 = document.getElementsByClassName("rad12");
+        var rad13 = document.getElementsByClassName("rad13");
+        var rad14 = document.getElementsByClassName("rad14");
+        var rad15 = document.getElementsByClassName("rad15");
+        var rad16 = document.getElementsByClassName("rad16");
+        var rad17 = document.getElementsByClassName("rad17");
+        var rad18 = document.getElementsByClassName("rad18");
+
+        const radArray = [
+            rad0,
+            rad1,
+            rad2,
+            rad3,
+            rad4,
+            rad5,
+            rad6,
+            rad7,
+            rad8,
+            rad9,
+            rad10,
+            rad11,
+            rad12,
+            rad13,
+            rad14,
+            rad15,
+            rad16,
+            rad17,
+            rad18
+        ]
+
+
+
+        //variablene til kast-knappen, terningene og checkboxene
+        btnCheck = document.getElementById("btnCheck");
+
+        terningNr1 = document.getElementById("terningNr1");
+        terningNr2 = document.getElementById("terningNr2");
+        terningNr3 = document.getElementById("terningNr3");
+        terningNr4 = document.getElementById("terningNr4");
+        terningNr5 = document.getElementById("terningNr5");
+
+        checkBox1 = document.getElementById("checkBox1");
+        checkBox2 = document.getElementById("checkBox2");
+        checkBox3 = document.getElementById("checkBox3");
+        checkBox4 = document.getElementById("checkBox4");
+        checkBox5 = document.getElementById("checkBox5");
+
+        let antallKast = 3;
+
+        // Funksjonen for et tilfeldig
+        function terningResultat() {
+            return Math.floor(Math.random() * 6) + 1
+        }
+
+
+
+        function kast() {
+            if (antallKast > 0) {
+                if (checkBox1.checked == false) {
+                    document.getElementById("terningNr1").innerHTML = terningResultat();
+                    document.getElementById("terningNr1").style.backgroundColor = "";
+                }
+                else {
+
+                }
+
+                if (checkBox2.checked == false) {
+                    document.getElementById("terningNr2").innerHTML = terningResultat();
+                    document.getElementById("terningNr2").style.backgroundColor = "";
+                }
+                else {
+
+                }
+
+                if (checkBox3.checked == false) {
+                    document.getElementById("terningNr3").innerHTML = terningResultat();
+                    document.getElementById("terningNr3").style.backgroundColor = "";
+                }
+                else {
+
+                }
+                if (checkBox4.checked == false) {
+                    document.getElementById("terningNr4").innerHTML = terningResultat();
+                    document.getElementById("terningNr4").style.backgroundColor = "";
+                }
+                else {
+
+                }
+                if (checkBox5.checked == false) {
+                    document.getElementById("terningNr5").innerHTML = terningResultat();
+                    document.getElementById("terningNr5").style.backgroundColor = "";
+                }
+                else {
+
+                }
+                // funksjoen kjører denne helt til antallKast = 0
+                antallKast = antallKast - 1;
+            }
+
+            else {
+                alert("Du har ikke flere kast")
+            }
+        }
+
+        // Denne funksjonen restarter terningene og gjør at ny spiller får 3 kast
+        function restartTerningene() {
+            antallKast = 3;
+        }
+
+        //Denne funksjonen brukes til å checke av checkboxene så neste spiller slipper å gjøre det manuelt
+        function checkBoxAv() {
+            document.getElementById("checkBox1").checked = false;
+            document.getElementById("checkBox2").checked = false;
+            document.getElementById("checkBox3").checked = false;
+            document.getElementById("checkBox4").checked = false;
+            document.getElementById("checkBox5").checked = false;
+
+            document.getElementById("terningNr1").style.backgroundColor = "";
+            document.getElementById("terningNr1").style.color = "black";
+            document.getElementById("terningNr2").style.backgroundColor = "";
+            document.getElementById("terningNr2").style.color = "black";
+            document.getElementById("terningNr3").style.backgroundColor = "";
+            document.getElementById("terningNr3").style.color = "black";
+            document.getElementById("terningNr4").style.backgroundColor = "";
+            document.getElementById("terningNr4").style.color = "black";
+            document.getElementById("terningNr5").style.backgroundColor = "";
+            document.getElementById("terningNr5").style.color = "black";
+
+        }
+
+        //Når man trykker på checkboxen så bytter terningen farge
+        function byttFarge() {
+
+            if (checkBox1.checked == true) {
+                document.getElementById("terningNr1").style.backgroundColor = "rgb(83, 83, 255)";
+                document.getElementById("terningNr1").style.color = "white"
+            }
+            else {
+                document.getElementById("terningNr1").style.backgroundColor = "";
+                document.getElementById("terningNr1").style.color = ""
+
+            }
+
+            if (checkBox2.checked == true) {
+                document.getElementById("terningNr2").style.backgroundColor = "rgb(83, 83, 255)";
+                document.getElementById("terningNr2").style.color = "white"
+            }
+            else {
+                document.getElementById("terningNr2").style.backgroundColor = "";
+                document.getElementById("terningNr2").style.color = ""
+
+            }
+
+            if (checkBox3.checked == true) {
+                document.getElementById("terningNr3").style.backgroundColor = "rgb(83, 83, 255)";
+                document.getElementById("terningNr3").style.color = "white"
+            }
+            else {
+                document.getElementById("terningNr3").style.backgroundColor = "";
+                document.getElementById("terningNr3").style.color = ""
+
+            }
+            if (checkBox4.checked == true) {
+                document.getElementById("terningNr4").style.backgroundColor = "rgb(83, 83, 255)";
+                document.getElementById("terningNr4").style.color = "white"
+            }
+            else {
+                document.getElementById("terningNr4").style.backgroundColor = "";
+                document.getElementById("terningNr4").style.color = ""
+
+            }
+            if (checkBox5.checked == true) {
+                document.getElementById("terningNr5").style.backgroundColor = "rgb(83, 83, 255)";
+                document.getElementById("terningNr5").style.color = "white";
+            }
+            else {
+                document.getElementById("terningNr5").style.backgroundColor = "";
+                document.getElementById("terningNr5").style.color = "";
+
+            }
+
+
+
+        }
+        //Når man trykker på knappen "lagre", så brukes denne funksjonen. Den printer inputene i de fire kolonnene ved siden av  
+        function navnLagre() {
+            radArray[0][1].innerHTML = document.getElementById("input1").value;
+            radArray[0][2].innerHTML = document.getElementById("input2").value;
+            radArray[0][3].innerHTML = document.getElementById("input3").value;
+            radArray[0][4].innerHTML = document.getElementById("input4").value;
+        }
+
+        function settTallEnTilSeks(terningVerdi, person) {
+            const terningVerdier = [
+                document.getElementById("terningNr1").innerHTML,
+                document.getElementById("terningNr2").innerHTML,
+                document.getElementById("terningNr3").innerHTML,
+                document.getElementById("terningNr4").innerHTML,
+                document.getElementById("terningNr5").innerHTML
+            ]
+
+            function sjekkAntall(array, nummer) {
+                return array.filter((v) => (v == nummer)).length;
+            }
+
+            let antallAvTerning = sjekkAntall(terningVerdier, terningVerdi);
+
+            radArray[terningVerdi][person].innerHTML = antallAvTerning * terningVerdi;
+
+            restartTerningene();
+            checkBoxAv();
+            summer(person);
+        }
+
+        function summer(person) {
+            const verdierScore1Til6 = [
+                Number(radArray[1][person].innerHTML), //0 i verdierScore1Til6
+                Number(radArray[2][person].innerHTML), //1  ----- II ---------
+                Number(radArray[3][person].innerHTML), //2  ----- II ---------
+                Number(radArray[4][person].innerHTML), //3  ----- II ---------
+                Number(radArray[5][person].innerHTML), //4  ----- II ---------
+                Number(radArray[6][person].innerHTML)  //5  ----- II ---------
+            ]
+            let sumScore1Til6 = verdierScore1Til6[0] + verdierScore1Til6[1] + verdierScore1Til6[2] + verdierScore1Til6[3] + verdierScore1Til6[4] + verdierScore1Til6[5];
+
+            radArray[7][person].innerHTML = sumScore1Til6;
+
+            if (sumScore1Til6 >= 63) {
+                radArray[8][person].innerHTML = 50
+            }
+            else {
+                radArray[8][person].innerHTML = 0
+            }
+        }
+
+        function ettPar(person) {
+            const terningVerdier = [
+                document.getElementById("terningNr1").innerHTML,
+                document.getElementById("terningNr2").innerHTML,
+                document.getElementById("terningNr3").innerHTML,
+                document.getElementById("terningNr4").innerHTML,
+                document.getElementById("terningNr5").innerHTML
+            ]
+
+            function sjekkAntall(array, nummer) {
+                return array.filter((v) => (v == nummer)).length;
+            }
+
+            radArray[9][person].innerHTML = 0;
+
+            let terningVerdi = 0;
+            while (terningVerdi <= 6) {
+                var antall = sjekkAntall(terningVerdier, terningVerdi);
+                if (antall >= 2) {
+                    radArray[9][person].innerHTML = terningVerdi * 2;
+                }
+                terningVerdi++;
+            }
+
+                restartTerningene();
+                checkBoxAv();
+
+            }
+
+            function toPar(person) {
+            const terningVerdier = [
+                document.getElementById("terningNr1").innerHTML,
+                document.getElementById("terningNr2").innerHTML,
+                document.getElementById("terningNr3").innerHTML,
+                document.getElementById("terningNr4").innerHTML,
+                document.getElementById("terningNr5").innerHTML
+            ]
+
+            function sjekkAntall(array, nummer) {
+                return array.filter((v) => (v == nummer)).length;
+            }
+
+            radArray[10][person].innerHTML = 0;
+
+            let terningVerdi1 = 0;
+            let terningVerdi2 = 0;
+            while (terningVerdi1 <= 6 && terningVerdi2 <= 6) {
+                var antall1 = sjekkAntall(terningVerdier, terningVerdi1);
+                var antall2 = sjekkAntall(terningVerdier, terningVerdi2);
+                if (antall1 && antall2 >= 2) {
+                    radArray[10][person].innerHTML = (terningVerdi1 + terningVerdi2) * 2;
+                }
+                terningVerdi1++ && terningVerdi2++;
+            }
+            
+                restartTerningene();
+                checkBoxAv();
+
+            }
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
