@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skuddår</title>
+</head>
+<style>
+
+    h1{
+        font-style: italic;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+
+    p{
+        font-size: 20px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        
+
+    }
+</style>
+<body>
+    <h1>Skuddår</h1>
+    <input type="text" placeholder="skriv inn år her" id="aar">
+    <button id="btnCheck" onclick="skuddaar()">Check</button>
+    <p id="txtSvar"></p>
+    <script>
+        txtSvar = document.getElementById("txtSvar"); 
+        btnCheck = document.getElementById("btnCheck");
+        function skuddaar() {
+            var aar = document.getElementById("aar").value;
+            if (0 == aar % 4) {
+                txtSvar.innerHTML = ("Året er et skuddår")
+            }
+            else {
+                txtSvar.innerHTML = ("Året er ikke et skuddår")
+            }
+        }
+    </script>
+</body>
+
+</html>

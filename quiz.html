@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+
+<body>
+    <h1 id="sporsmaal"> </h1>
+    <input type="text" placeholder="Svar" id="inpSvar" hidden="true">
+    <input type="text" placeholder="Skriv inn nytt svar" id="inpNyttSvar" hidden="true">
+    <button id="btnAdmin" hidden="true">Bli Admin</button>
+    <br>
+    <button id="alternativ1" onclick="sjekkSvar(1)"></button>
+    <br>
+    <button id="alternativ2" onclick="sjekkSvar(2)"></button>
+    <br>
+    <button id="alternativ3" onclick="sjekkSvar(3)"></button>
+    <br>
+    <br>
+    <button id="btnForrige">Forrige</button>
+    <button id="btnNeste">Neste</button>
+    <br>
+    <br>
+    <img src="" width="500px" id="imgBilde" alt="Finner ikke bilde">
+
+
+    <script>
+
+        var sporsmaal = document.getElementById("sporsmaal");
+        var alternativ1 = document.getElementById("alternativ1");
+        var alternativ2 = document.getElementById("alternativ2");
+        var alternativ3 = document.getElementById("alternativ3");
+        var lagSporsmaal = document.getElementById("inpNyttSvar")
+        var btnAdmin = document.getElementById("btnAdmin")
+        var inpSvar = document.getElementById("inpSvar");
+        var btnForrige = document.getElementById("btnForrige");
+        var btnNeste = document.getElementById("btnNeste");
+        var imgBilde = document.getElementById("imgBilde")
+        var spmNr = 0;
+
+        var spmOgSvar = [
+            { q: "Hvor mange energidrikker drikker eirik hver uke?", alternativ1: "5", alternativ2: "1000", alternativ3: "40", a: 2, bilde: "https://akamai.vgc.no/v2/images/f166ea53-36a5-49bc-ab70-88b63b41ce2a?fit=crop&format=auto&h=1267&w=1900&s=b65db2ad2ddcb5c7cd443ab8fe088e80892e0dd5" },
+            { q: "Pinnekjøtt eller ribbe?", alternativ1: "Pinnekjøtt", alternativ2: "Ribbe", alternativ3: "Vet ikke", a: 1, bilde: "https://res.cloudinary.com/norgesgruppen/images/c_scale,dpr_auto,f_auto,q_auto:eco,w_1600/ipjpwdc2fwp024grjbro/pinnekjott-med-vossakorv-og-kalrabistappe" },
+            { q: "Hva er etternavnet til Obama?", alternativ1: "Ingen Vet", alternativ2: "alternativ 1", alternativ3: "Obama", a: 3, bilde: "https://i.pinimg.com/originals/29/dd/04/29dd04390251909d612e2aa9b605b994.jpg" },
+            { q: "Hvis Petter kjører en bil i 20 km/t på et strekk på 58 km, og stopper innom Rema-1000 2 ganger, hvor gammel er da Petter?", alternativ1: "18 år", alternativ2: "2 år", alternativ3: "81 år", a: 3, bilde: "https://no.ehandel.com/wp-content/uploads/sites/4/2019/11/rema1000fauske.jpg" },
+            { q: "Christian er 17 år gammel. Broren hans er 15 år gammel. Hva heter faren til Christian?", alternativ1: "Cirstian", alternativ2: "Christian", alternativ3: "Brede", a: 3, bilde: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Slottet_i_Oslo_1.jpg/640px-Slottet_i_Oslo_1.jpg" },
+            { q: "Nikolai lager en trekant. Hva er arealet av firkanten? (hint: spør Nikolai)", alternativ1: "1", alternativ2: "2", alternativ3: "3", a: 2, bilde: "https://2.bp.blogspot.com/-XYgbB8PhDoM/V4vYa_3ZkuI/AAAAAAAAFr0/6i6I-R4801QqqmjklcTCGbel67YBXNYegCLcB/s1600/2d.JPG" }
+
+        ];
+
+
+        function setOppSkjermbilde() {
+            sporsmaal.innerHTML = spmOgSvar[spmNr].q;
+            alternativ1.innerHTML = spmOgSvar[spmNr].alternativ1
+            alternativ2.innerHTML = spmOgSvar[spmNr].alternativ2
+            alternativ3.innerHTML = spmOgSvar[spmNr].alternativ3
+            imgBilde.src = spmOgSvar[spmNr].bilde
+        }
+
+        setOppSkjermbilde();
+
+
+        function sjekkSvar(alternativ) {
+            if (alternativ == spmOgSvar[spmNr].a) {
+                alert("Riktig!")
+
+            }
+            else {
+                alert("feil!")
+            }
+        }
+
+
+        function nesteSpm() {
+            if (spmNr < spmOgSvar.length - 1) {
+                btnForrige.disabled = false;
+                spmNr = spmNr + 1
+                inpSvar.value = ""
+                setOppSkjermbilde()
+            }
+            else {
+                btnNeste.disabled = true
+            }
+
+        }
+        btnNeste.addEventListener("click", nesteSpm);
+
+        function forrigeSpm() {
+            if (spmNr > 0) {
+                btnNeste.disabled = false
+                spmNr = spmNr - 1;
+                inpSvar.value = ""
+                setOppSkjermbilde();
+
+            }
+            if (spmNr == 0) {
+                btnForrige.disabled = true;
+            }
+        }
+        btnForrige.addEventListener("click", forrigeSpm);
+
+
+        function adminFunksjoner() {
+            lagSporsmaal.hidden = false;
+            sporsmaal.innerHTML = "Skriv nytt spørsmål";
+            inpSvar.placeholder = "Spørsmål";
+            alternativ1.hidden = true;
+            alternativ2.hidden = true;
+            alternativ3.hidden = true;
+            imgBilde.src = "";
+            imgBilde.alt = "";
+            btnNeste.hidden = true;
+            btnForrige.hidden = true;
+            btnCheck.removeEventListener("click", sjekkSvar);
+            btnCheck.addEventListener("click", leggInnNyttSporsmaal)
+            btnCheck.innerHTML = "Legg inn spørsmålet"
+
+        }
+        btnAdmin.addEventListener("click", adminFunksjoner)
+
+
+        function normalFunksjoner() {
+            //tilbake til normal spørsmålskjøring
+            btnCheck.removeEventListener("click", leggInnNyttSporsmaal);
+            btnCheck.addEventListener("click", sjekkSvar);
+        }
+
+
+        function leggInnNyttSporsmaal() {
+            var nyttSpm = { q: inpSvar.value, a: lagSporsmaal.value, alternativ1: "", alternativ2: "", alternativ3: "", bilde: "" }
+            spmOgSvar.push();
+
+        }
+
+        function knappeTrykk(evt) {
+            var tallkode = evt.keyCode;
+            if (tallkode == 66){ //du har trykket "b"
+                btnAdmin.hidden = false
+                inpSvar.hidden = false
+            }
+            if(tallkode == 190){
+                btnAdmin.hidden = true
+                inpSvar.hidden = true
+            }
+        }
+        document.addEventListener("keydown", knappeTrykk)
+
+
+
+
+    </script>
+
+    <style>
+        body {
+            background-image: url(https://www.teahub.io/photos/full/11-111158_adventure-time-wallpaper-gif.gif);
+            min-height: 100%;
+            width: 100%;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+
+        h1 {
+
+            margin-top: 100px;
+            color: white;
+        }
+
+        #alternativ1 {
+            margin: 5px;
+            padding: 10px;
+            width: 150px;
+            font-size: 15px;
+        }
+
+        #alternativ2 {
+            margin: 5px;
+            padding: 10px;
+            width: 150px;
+            font-size: 15px;
+        }
+
+        #alternativ3 {
+            margin: 5px;
+            padding: 10px;
+            width: 150px;
+            font-size: 15px;
+        }
+
+        #btnForrige{
+            font-size: 13px;
+            margin: 5px;
+            padding: 10px;
+            width: 80px;
+        }
+
+        #btnNeste{
+            font-size: 13px;
+            margin: 5px;
+            padding: 10px;
+            width: 80px;
+        }
+
+        #btnAdmin{
+            font-size: 13px;
+            margin: 5px;
+            padding: 8px;
+            width: 100px;
+        }
+
+        #inpSvar{
+            font-size: 13px;
+            margin: 5px;
+            padding: 8px;
+            width: 150px;
+        }
+
+    </style>
+</body>
+
+</html>

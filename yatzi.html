@@ -128,6 +128,7 @@
         left: 60%;
         top: 32%;
         text-shadow: 7px 1px 0px rgb(255, 255, 255);
+        transition: ease-in-out 0.8s;
     }
 
     h1:hover {
@@ -415,13 +416,13 @@
 
         let antallKast = 3;
 
-        // Funksjonen for et tilfeldig
+        // Funksjonen for et tilfeldig tall mellom en til seks
         function terningResultat() {
             return Math.floor(Math.random() * 6) + 1
         }
 
 
-
+        //Når kast knappen trykkes på, kjøres denne funksjonen
         function kast() {
             if (antallKast > 0) {
                 if (checkBox1.checked == false) {
@@ -558,6 +559,7 @@
             radArray[0][4].innerHTML = document.getElementById("input4").value;
         }
 
+        
         function settTallEnTilSeks(terningVerdi, person) {
             const terningVerdier = [
                 document.getElementById("terningNr1").innerHTML,

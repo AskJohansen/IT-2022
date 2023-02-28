@@ -10,8 +10,8 @@
 
 <style>
 
+/* Denne @media koden har jeg ikke gjort selv, men skal gjøre at det er mulig å se periodesystemet på mobil*/
 @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
-
 html {
   transform: rotate(-90deg);
   transform-origin: left top;
@@ -48,23 +48,16 @@ html {
         
     }
 
-    
-    
     section{
         margin: 50px;
         display: grid;
         grid-gap: 2px;
-        grid-template-columns: repeat(18, minmax(10px, 1fr));
-        
-        
-       
+        grid-template-columns: repeat(18, minmax(10px, 1fr));   
 
     }
 
     .span2{
         grid-column: span 16;
-       
-
     }
 
     .span3{
@@ -74,12 +67,10 @@ html {
 
     .span4{
         grid-column: span 3;
-        
     }
 
     .usynlig{
         opacity: 0;
-        
     }
 
     .ikkemetall{

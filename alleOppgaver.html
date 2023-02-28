@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
+    <title>Mine oppgaver</title>
+
+</head>
+<style>
+    body {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(https://cdnb.artstation.com/p/assets/images/images/024/538/827/original/pixel-jeff-clipa-s.gif?1582740711);
+        min-height: 100vh;
+        width: 100%;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+    }
+
+    h1 {
+        margin: 20px;
+        text-align: center;
+        font-size: 60px;
+        color: white;
+        font-family: 'Rubik Wet Paint', cursive;
+    }
+
+    .meny {
+        width: 250px;
+        display: grid;
+        margin-left: 40%;
+    }
+
+    .meny a {
+        margin-top: 15px;
+        font-size: 20px;
+        border: 2px solid whitesmoke;
+        padding: 20px;
+        color: white;
+        text-decoration: none;
+        background-color: transparent;
+        text-align: center;
+        transition: ease-in-out 0.5s;
+    }
+
+    .meny a:hover {
+        transform: scale(1.1);
+        transition: ease-in-out 0.5s;
+    }
+
+    .btnForside a {
+        text-decoration: none;
+        color: white;
+        position: absolute;
+        left: 20px;
+        padding: 20px;
+
+    }
+
+    .btnForside a::after {
+        content: "";
+        width: 0%;
+        height: 2px;
+        background: #ffffff;
+        display: block;
+        margin: auto;
+        transition: 0.8s;
+    }
+
+    .btnForside a:hover::after {
+        width: 100%;
+    }
+</style>
+
+<body>
+    <div class="btnForside"> <a href="index.html">Tilbake til forside</a></div>
+    <h1>MINE OPPGAVER</h1>
+    <div class="meny">
+        <a href="Innleveringsoppgave1/Innleveringsoppgave.html" style="background-color: rgb(78, 3, 78);"> IT Hovedoppgave </a>
+        <a href="ukeplan.html"> Ukeplan </a>
+        <a href="OL.html" style="background-color: rgb(78, 3, 78) ;">OL Ringer</a>
+        <a href="griddemo.html"> Periodesystemet </a>
+        <a href="js1.html" style="background-color: rgb(78, 3, 78) ;"> Kalkulator </a>
+        <a href="js2.html"> Gjett passord </a>
+        <a href="js4.html" style="background-color: rgb(78, 3, 78) ;"> Lotto </a>
+        <a href="TilfeldigHilsen.html">Tilfeldig Hilsen</a>
+        <a href="kvadratTall.html" style="background-color: rgb(78, 3, 78) ;">Kvadrattall</a>
+        <a href="yatzi.html">Yatzzzi</a>
+        <a href="quiz.html" style="background-color: rgb(78, 3, 78) ;">Quizz</a>
+    </div>
+
+</body>
+
+</html>
