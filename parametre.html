@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StjelKodenMin</title>
+</head>
+
+<body>
+    <script>
+
+
+        //*****************************************************************//
+        // funksjon sjekkTall()                                            //
+        // Denne funskjonen har tre parametere                             //
+        // Om 2 av 3 av parameterene er like,                              //
+        // så returerer funksjonen summen av de to like parameterne.       //
+        // Om ingen av parameterene er like, returnerer det false          //
+        //*****************************************************************//
+
+        function sjekkTall(forste, andre, tredje) {
+            let forsteSum = forste + andre; //lokal variabel
+            let andreSum = forste + tredje;
+            let tredjeSum = andre + tredje;
+
+            if (forste == andre) {
+                return forsteSum;
+            }
+
+            if (forste == tredje) {
+                return andreSum
+            }
+
+            if (andre == tredje) {
+                return tredjeSum
+            }
+
+            else {
+                return false;
+            }
+        }
+
+
+        //*****************************************************************//
+        // Navn: sjekkEttPar()                                             //
+        // Denne funskjonen har fem parametere / terninger                 //
+        // Funksjonen finner ett par og summerer de sammen                 //
+        //*****************************************************************//
+
+
+        function sjekkEttPar(terningEn, terningTo, terningTre, terningFire, terningFem) {
+            const tallArray = [
+                terningEn,
+                terningTo,
+                terningTre,
+                terningFire,
+                terningFem
+            ]
+            if (tallArray[0] == tallArray[1] || tallArray[0] == tallArray[2] || tallArray[0] == tallArray[3] || tallArray[0] == tallArray[4]) {
+                return tallArray[0] * 2;
+            }
+            if (tallArray[1] == tallArray[0] || tallArray[1] == tallArray[2] || tallArray[1] == tallArray[3] || tallArray[1] == tallArray[4]) {
+                return tallArray[1] * 2;
+            }
+            if (tallArray[2] == tallArray[0] || tallArray[2] == tallArray[1] || tallArray[2] == tallArray[3] || tallArray[2] == tallArray[4]) {
+                return tallArray[2] * 2;
+            }
+            if (tallArray[3] == tallArray[0] || tallArray[3] == tallArray[1] || tallArray[3] == tallArray[2] || tallArray[3] == tallArray[4]) {
+                return tallArray[3] * 2;
+            }
+            if (tallArray[4] == tallArray[0] || tallArray[4] == tallArray[4] || tallArray[0] == tallArray[3] || tallArray[0] == tallArray[4]) {
+                return tallArray[4] * 2;
+            }
+            else {
+                return false;
+            }
+        }
+
+        function sjekkToPar(terningEn, terningTo, terningTre, terningFire, terningFem) {
+            const parTo = [
+                terningEn,
+                terningTo,
+                terningTre,
+                terningFire,
+                terningFem
+            ]
+
+            if (parTo[0] == parTo[1]) {
+
+            }
+
+        }
+
+        //Oppgave 5 og 6.
+        //a)
+        const tall = [2, 5, 3, 6, -8, 35, -21, 34, 555, -645, 4, 89, 20, 19, -18, 17, -16, 15, -14, -24];
+
+        function finnStorsteTall(arrayInput) {
+
+            let storst = tall[0];
+
+            for (let i = 0; i < arrayInput.length; i++) {
+                if (arrayInput[i] > storst){
+                    storst = arrayInput[i];
+                }
+            }
+            return storst
+        }
+        
+
+
+        //b)
+
+        function finnMinsteTall(arrayInput) {
+
+            let minst = tall[0];
+
+            for (let i = 0; i < arrayInput.length; i++) {
+                if (arrayInput[i] < minst) {
+                    minst = arrayInput[i];
+                }
+            }
+            return minst
+        }
+        
+
+        //c)
+
+        function finnVariasjonsBredde() {
+            console.log(finnStorsteTall(tall) - finnMinsteTall(tall))
+        }
+        finnVariasjonsBredde()
+
+
+        //d)
+
+        function summer(arrayInput){
+            let sum = 0
+
+            for(let i = 0; i < arrayInput.length; i++){
+                sum+= arrayInput[i];
+            }
+            return sum / arrayInput.length;
+        }
+
+
+    
+        //Oppgave 9
+
+        const gangetabell = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            [0, 2, 4, 6, 8, 10, 12, 14, 16 , 18, 20],
+            [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30],
+            [0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40],
+            [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
+            [0, 6, 12, 18, 24, 30, 36, 42, 48, 54, 60],
+            [0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70],
+            [0, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80],
+            [0, 9, 18, 27, 36, 45, 54, 63, 72, 81, 90],
+            [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+        ]
+
+        console.log(gangetabell[10][10])
+
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blippspill</title>
+</head>
+
+<body>
+    <nav>
+        <input type="color" id="fargeEndrer">
+        <h1 id="poengElement">Poeng</h1>
+        <button id="btnFarge">Trykk for tilfeldig farge</button>
+    </nav>
+
+
+    <audio src="pop3.mp3" , id="lyd"></audio>
+
+
+
+</body>
+<script>
+    var poengElement = document.getElementById("poengElement")
+    var fargeEndrer = document.getElementById("fargeEndrer");
+    var btnFarge = document.getElementById("btnFarge")
+    var nav = document.querySelector("nav")
+    var poeng = 1
+    var ny = true
+    var lyd = document.getElementById("lyd")
+    var Fargemode = false
+
+
+    var fjern = function (evt) {
+        evt.stopPropagation();
+        if (!ny) {
+            var minAnim = evt.target.animate([{ transform: "scale(1)" }, { transform: "scale(0.01)" }], 350)
+            minAnim.onfinish = function () {
+                document.body.removeChild(evt.target);
+                poeng++;
+            }
+            poengElement.innerHTML = "Poeng: " + poeng;
+            lyd.play()
+        }
+        ny = false;
+
+
+    }
+
+    window.onclick = function (evt) {
+        var mittElement = document.createElement("div");
+        ny = true
+        mittElement.style.top = evt.clientY - 25 + "px";
+        mittElement.style.left = evt.clientX - 25 + "px";
+        document.body.appendChild(mittElement);
+        mittElement.onmouseenter = fjern
+        if(Fargemode == false){
+            mittElement.style.backgroundColor = fargeEndrer.value
+        }
+        else{
+            var randomColor = Math.floor(Math.random() * 16777215).toString(16)
+            mittElement.style.backgroundColor = "#" + randomColor
+        }
+    }
+
+    btnFarge.onclick = function (evt) {
+        if (Fargemode == false) {
+            Fargemode = true
+            btnFarge.innerHTML = "Trykk for selvalgt farge"
+            
+        }
+        else {
+            Fargemode = false
+            btnFarge.innerHTML = "Trykk for tilfeldig farge"
+        }
+    }
+
+
+    nav.onclick = function (evt) {
+        evt.stopPropagation();
+    }
+
+
+
+
+
+</script>
+<style>
+    div {
+        position: absolute;
+        background-color: rgb(89, 5, 163);
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        z-index: -10;
+    }
+
+    nav {
+        margin: 0px;
+        padding: 10px;
+        background-color: rgb(54, 53, 53);
+        border: 2px black solid;
+
+    }
+
+    h1 {
+        font-family: monospace;
+        color: white;
+        position: absolute;
+        top: 5px;
+        left: 250px;
+
+    }
+
+    button {
+        position: absolute;
+        top: 15px;
+        left: 400px;
+        padding: 10px;
+    }
+</style>
+
+</html>
