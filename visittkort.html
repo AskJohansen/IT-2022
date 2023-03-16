@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visittkort - Innlevering</title>
+</head>
+
+<body>
+    <nav>
+        <div>
+            <h2>Navn</h2>
+            <input type="text" id="navnInput" onkeyup="settInnNavn()">
+        </div>
+        <div>
+            <h2>Kjønn</h2>
+            <select id="kjonn" onkeyup="settInnKjonn()">
+                <option value="Tom"> </option>
+                <option value="Mann"> Mann </option>
+                <option value="Dame"> Dame </option>
+                <option value="Annet"> Annet </option>
+            </select>
+        </div>
+
+        <div>
+            <h2>Stilling</h2>
+            <input type="text" id="stillingInput" onkeyup="settInnStilling()">
+        </div>
+
+        <div>
+            <h2>Telefonnummer</h2>
+            <input type="number" maxlength="99999999" id="tlfInput" onkeyup="settInntlfNummer()">
+        </div>
+
+        <div>
+            <h2>Valgfri</h2>
+            <input type="text" id="valgInput" onkeyup="settInnValgfri()">
+        </div>
+
+        <div>
+            <h2>Har Førerkort</h2>
+            <input type="checkbox" id="forerKort">
+        </div>
+
+        <div>
+            <h2>Farge på Bakrunn</h2>
+            <input type="color" id="fargeEndrer" value="#ffffff">
+        </div>
+
+        <div>
+            <h2>Farge på Ramme</h2>
+            <button onclick="rammeFarge()">Tilfeldig farge</button>
+        </div>
+
+        <div>
+            <h2>Type Ramme Rundt</h2>
+            <input type="radio" name="Ramme" id="solid"> Solid
+            <br>
+            <input type="radio" name="Ramme" id="dotted"> Dotted
+            <br>
+            <input type="radio" name="Ramme" id="double"> Double
+        </div>
+
+        <div>
+            <h2>Fødselsdag</h2>
+            <input type="date" id="fodselsDag">
+        </div>
+
+        <div>
+            <h2>Bilde av Person</h2>
+            <input type="file" id="imgInput">
+        </div>
+        <br>
+        <button id="btnSettInn" onclick="settInnData()">Sett inn</button>
+    </nav>
+
+
+    <div id="visittKort">
+        <div id="plasserNavn"></div>
+        <div id="visittKortInnhold">
+            <div id="InnholdText">
+                <div id="plasserStilling"></div>
+                <div id="plasserKjonn"></div>
+                <div id="plassertlfNummer"></div>
+                <div id="plasserValg"></div>
+                <div id="plasserForerkort"></div>
+                <div id="plasserfodselsdag"></div>
+                <div id="plasserImg"></div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+<script>
+    var navn = document.getElementById("navnInput")
+    var Valg = document.getElementById("valgInput")
+    var stilling = document.getElementById("stillingInput")
+    var tlfNummer = document.getElementById("tlfInput")
+    var Forerkort = document.getElementById("forerKort")
+    var bgFarge = document.getElementById("fargeEndrer")
+    var rammeInput = document.getElementById("rammeInput")
+    var fodselsDag = document.getElementById("fodselsDag")
+    var imgInput = document.getElementById("imgInput")
+    var btnSettInn = document.getElementById("btnSettInn")
+    var visittKort = document.getElementById("visittKort")
+    var plasserbgFarge = document.getElementById("plasserbgFarge")
+
+    var checkBox1 = document.getElementById("solid")
+    var checkBox2 = document.getElementById("dotted")
+    var checkBox3 = document.getElementById("double")
+
+    var pKjonn = document.getElementById("plasserKjonn")
+
+
+    //settInnNavn() bruker onkeyup, som betyr at funksjonen kjøres med en gang man forlater tastaturet
+    //Dette gjør at funksjonen kjører/oppdaterer seg for hver bokstav man skriver
+
+    function settInnNavn() {
+        var NavnValue = document.getElementById("navnInput").value
+        document.getElementById("plasserNavn").innerHTML = "Navn: " + NavnValue
+
+    }
+
+    function settInnKjonn() {
+        var kjonn1 = document.getElementById("kjonn").value
+        document.getElementById("plasserKjonn").innerHTML = "Kjønn: " + kjonn1
+
+    }
+
+
+    function settInnStilling() {
+        var StillingValue = document.getElementById("stillingInput").value
+        document.getElementById("plasserStilling").innerHTML = "Stilling: " + StillingValue
+
+    }
+
+    function settInntlfNummer() {
+        var tlfNummerValue = document.getElementById("tlfInput").value
+        document.getElementById("plassertlfNummer").innerHTML = "Tlf:" + tlfNummerValue
+
+    }
+
+    function settInnValgfri(){
+        var valgValue = document.getElementById("valgInput").value
+        document.getElementById("plasserValg").innerHTML = valgValue
+    }
+
+    // Funksjonen for rammen til visittkortet. Her bruker jeg 3 if setninger, så når en av boxene er trykket på (checkbox X = true)
+    function Ramme() {
+        if (checkBox1.checked == true) {
+            visittKort.style.border = "solid 5px"
+        }
+        else {
+
+        }
+        if (checkBox2.checked == true) {
+            visittKort.style.border = "dotted 5px"
+        }
+        else {
+
+        }
+        if (checkBox3.checked == true) {
+            visittKort.style.border = "double 5px"
+        }
+        else {
+
+        }
+    }
+
+    function rammeFarge(){
+        var randomColor = Math.floor(Math.random() * 16777215).toString(16)
+        visittKort.style.borderColor = "#" + randomColor
+    }
+
+    function forerKort() {
+        if (Forerkort.checked == true) {
+            document.getElementById("plasserForerkort").innerHTML = "Har Førerkort"
+        }
+        else {
+            document.getElementById("plasserForerkort").innerHTML = "Har ikke Førerkort"
+        }
+    }
+
+
+    function settInnData() {
+        settInnKjonn()
+        Ramme()
+        forerKort()
+        document.getElementById("plasserfodselsdag").innerHTML = "Dato: " + fodselsDag.value;
+        visittKort.style.backgroundColor = bgFarge.value;
+    }
+
+</script>
+
+<style>
+    body {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(https://wallpaperaccess.com/full/1384134.jpg);
+        font-family: Verdana;
+    }
+
+    div {
+        font-size: 15px;
+    }
+
+    h2 {
+        font-size: 15px;
+    }
+
+    nav {
+        margin: 20px;
+        margin-top: 40px;
+        background-color: rgb(167, 128, 128);
+        display: inline-block;
+        padding: 20px;
+        border: rgb(0, 0, 0) double 6px;
+    }
+
+    #visittKort {
+        position: absolute;
+        background-color: white;
+        top: 250px;
+        left: 400px;
+        height: 400px;
+        width: 700px;
+    }
+
+    #visittKortInnhold {
+        position: absolute;
+        margin: 5px;
+        top: 25%;
+        height: 200px;
+        width: 600px;
+        background-color: white;
+    }
+
+    #plasserNavn {
+        margin: 20px;
+        font-size: 40px;
+    }
+
+    #InnholdText{
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+</style>
+
+</html>
