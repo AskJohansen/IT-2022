@@ -87,9 +87,9 @@
                 <div id="plasserValg"></div>
                 <div id="plasserForerkort"></div>
                 <div id="plasserfodselsdag"></div>
-                <div id="plasserImg"></div>
             </div>
         </div>
+        <img src="" alt="" id="bildeImg">
     </div>
 
 
@@ -104,16 +104,19 @@
     var bgFarge = document.getElementById("fargeEndrer")
     var rammeInput = document.getElementById("rammeInput")
     var fodselsDag = document.getElementById("fodselsDag")
-    var imgInput = document.getElementById("imgInput")
     var btnSettInn = document.getElementById("btnSettInn")
     var visittKort = document.getElementById("visittKort")
-    var plasserbgFarge = document.getElementById("plasserbgFarge")
 
     var checkBox1 = document.getElementById("solid")
     var checkBox2 = document.getElementById("dotted")
     var checkBox3 = document.getElementById("double")
-
     var pKjonn = document.getElementById("plasserKjonn")
+
+    var imgInput = document.getElementById("imgInput")
+    var bildeImg = document.getElementById("bildeImg")
+
+
+
 
 
     //settInnNavn() bruker onkeyup, som betyr at funksjonen kjøres med en gang man forlater tastaturet
@@ -144,7 +147,7 @@
 
     }
 
-    function settInnValgfri(){
+    function settInnValgfri() {
         var valgValue = document.getElementById("valgInput").value
         document.getElementById("plasserValg").innerHTML = valgValue
     }
@@ -171,7 +174,7 @@
         }
     }
 
-    function rammeFarge(){
+    function rammeFarge() {
         var randomColor = Math.floor(Math.random() * 16777215).toString(16)
         visittKort.style.borderColor = "#" + randomColor
     }
@@ -193,6 +196,20 @@
         document.getElementById("plasserfodselsdag").innerHTML = "Dato: " + fodselsDag.value;
         visittKort.style.backgroundColor = bgFarge.value;
     }
+
+
+    //finnBilde.onload = function () {
+    //bildeImg.src = finnBilde.result;
+    //}
+    imgInput.addEventListener("change", function () {
+        //finnBilde.readAsDataURL(imgInput.files[0])
+        var aktueltFilNavn = URL.createObjectURL(imgInput.files[0]);
+        bildeImg.src = aktueltFilNavn;
+
+    });
+
+
+
 
 </script>
 
@@ -242,9 +259,17 @@
         font-size: 40px;
     }
 
-    #InnholdText{
+    #InnholdText {
         margin-left: 20px;
         margin-top: 20px;
+    }
+
+    img {
+        position: absolute;
+        left: 420px;
+        top: 20%;
+        height: 250px;
+        width: 250px;
     }
 </style>
 
