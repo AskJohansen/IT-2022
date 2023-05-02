@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kryptering</title>
+</head>
+<body>
+
+    <input type="number" id="forskyvningsTall" placeholder="Forskyvning">
+    <input type="text" id="inputOrd" placeholder="Skriv inn et ord">
+    <p id="krypteringSvar"></p>
+
+    <script>
+        inputOrd = document.getElementById("inputOrd");
+        krypteringSvar = document.getElementById("krypteringSvar");
+        forskyvningsTall = document.getElementById("forskyvningsTall");
+
+
+        //*****************************************************************//
+        // funksjonen utføres ved inputOrd.onkeyup                         //
+        // Denne funksjonen krypterer tekst fra et inputfelt ved hjelp     //
+        // av forskyvning av ASCII -koder                                  //
+        //*****************************************************************//
+
+        inputOrd.onkeyup = function(){
+            let i = inputOrd.value.length - 1;
+            let Kryptering = inputOrd.value.charCodeAt(i);
+            let forskyvning = parseInt(forskyvningsTall.value);
+            // Her forskyver vi bokstavene fra inputOrd ved å summere inputOrd med antall forskyvning
+            if(i == krypteringSvar.innerHTML.length){
+                krypteringSvar.innerHTML += String.fromCharCode(Kryptering + forskyvning) 
+            }
+
+            //Dette gjør at funksjonen fjerner krypteringSvar om ikke lengden i inputen "inputOrd" er lik lengden av krypteringSvar 
+            else{
+                let tekst = krypteringSvar.innerHTML;
+                krypteringSvar.innerHTML = tekst.slice(0,i + 1);
+            }
+        }
+
+    </script>
+</body>
+</html>
