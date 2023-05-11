@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visittkort - Innlevering</title>
+</head>
+
+<body>
+    <nav>
+        <div>
+            <h2>Legg til Person</h2>
+            <select id="minListe">
+            </select>
+    </nav>
+
+
+    <div id="visittKort">
+        <div id="plasserNavn"></div>
+        <div id="visittKortInnhold">
+            <div id="InnholdText">
+                <div id="plasserStilling"></div>
+                <div id="plasserKjonn"></div>
+                <div id="plassertlfNummer"></div>
+                <div id="plasserValg"></div>
+                <div id="plasserForerkort"></div>
+                <div id="plasserfodselsdag"></div>
+            </div>
+        </div>
+        <img src="" alt="" id="bildeImg">
+    </div>
+
+
+
+
+</body>
+<script src="visittkortDatabase.js"></script>
+<script>
+
+
+    var plasserNavn = document.getElementById("plasserNavn")
+    var plasserKjonn = document.getElementById("plasserKjonn")
+    var plasserStilling = document.getElementById("plasserStilling")
+    var plassertlfNummer = document.getElementById("plassertlfNummer")
+    var plasserValg = document.getElementById("plasserValg")
+    var plasserForerkort = document.getElementById("plasserForerkort")
+    var plasserfodselsdag = document.getElementById("plasserfodselsdag")
+
+
+    var minListe = document.getElementById("minListe");
+    var valgtIndex = 0
+
+    for (element in dataInfo.kortArray) {
+        minListe.innerHTML += "<option>" + dataInfo.kortArray[element].navn + "</option>";
+    }
+    minListe.onchange = function () {
+        valgtIndex = minListe.selectedIndex;
+        plasserNavn.innerHTML = dataInfo.kortArray[valgtIndex].navn
+        plasserKjonn.innerHTML = "Kjønn: " + dataInfo.kortArray[valgtIndex].kjonn
+        plasserStilling.innerHTML = "Stilling: " + dataInfo.kortArray[valgtIndex].stilling
+        plassertlfNummer.innerHTML = "Telefonnummer: " + dataInfo.kortArray[valgtIndex].telefonnummer
+        plasserValg.innerHTML = "Valgfri: " + dataInfo.kortArray[valgtIndex].valgfri
+        plasserForerkort.innerHTML = "Førerkort: " + dataInfo.kortArray[valgtIndex].forerkort
+        plasserfodselsdag.innerHTML = "Fødselsdag: " + dataInfo.kortArray[valgtIndex].fodselsdag
+
+
+
+    }
+
+</script>
+
+<style>
+    body {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(https://wallpaperaccess.com/full/1384134.jpg);
+        font-family: Verdana;
+    }
+
+    div {
+        font-size: 15px;
+    }
+
+    h2 {
+        font-size: 15px;
+    }
+
+    nav {
+        margin: 20px;
+        margin-top: 300px;
+        background-color: rgb(128, 167, 151);
+        display: inline-block;
+        padding: 20px;
+        border: rgb(0, 0, 0) double 6px;
+    }
+
+    #visittKort {
+        position: absolute;
+        background-image: url(https://images.squarespace-cdn.com/content/v1/5b9b53418f5130e19f1bfc93/1642001697359-XDM5S7SKM50Q3O9FQ0D5/146215451_3966231553407329_955000897711153253_n.png?format=1500w);
+        top: 200px;
+        left: 400px;
+        height: 500px;
+        width: 800px;
+        background-position: center;
+        background-size: cover;
+        
+    }
+
+    #plasserNavn {
+        color: white;
+        text-shadow: black 2px 3px 5px;
+        margin: 20px;
+        font-size: 50px;
+        font-weight: bolder;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    #InnholdText {
+        padding: 20px;
+        color: white;
+        font-size: 50px;
+        margin-left: 20px;
+        margin-top: 80px;
+    }
+
+   
+</style>
+
+</html>
