@@ -9,9 +9,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
 </head>
 <style>
+    html {
+        scroll-behavior: smooth;
+    }
+
     .topptekst {
-        margin-left: 380px;
-        margin-top: 350px;
+        margin-left: 25%;
+        margin-top: 10%;
+        width: 700px;
+        height: 400px;
         display: inline-block;
         box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
         border-radius: 5px;
@@ -21,25 +27,38 @@
         transition: ease-in-out 0.5s;
     }
 
-
-
     .topptekst a {
-        text-decoration: none;
+        padding: 15px 25px;
+        border: 2px solid;
+        border-radius: 50px;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-align: center;
         color: white;
-        font-size: 70px;
-        font-family: 'Cinzel Decorative', cursive;
-        transition: ease-in-out 0.5s;
-
+        font-weight: bold;
+        text-decoration: none;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: ease-in 0.3s;
     }
+
+    section {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: space-between;
+    }
+
+
     /* når musepekeren holder over overskriften, vil rammen rundt bli svart*/
     .topptekst:hover {
-        
         transition: ease-in-out 0.5s;
     }
+
     /* når musepekeren holder over overskriften, vil fargen på overskriften endres til svart*/
-    .topptekst a:hover { 
-        color: rgb(0, 0, 0);
-        transition: ease-in-out 0.5s;
+    .topptekst a:hover {
+        background-color: black;
+        transition: ease-in-out 0.3s;
     }
 
 
@@ -48,10 +67,10 @@
 
     .bg {
         animation: bakgrunnAnimasjon 5s ease-in-out infinite alternate;
-        background-image: linear-gradient(-60deg, rgb(0, 0, 0) 50%, rgb(255, 132, 56) 50%);
+        background-image: linear-gradient(-60deg, rgba(0, 55, 237, 0.706) 50%, rgba(0, 0, 0, 0.778) 50%);
         bottom: 0;
         left: -50%;
-        opacity: .5;
+        opacity: 1;
         position: fixed;
         right: -50%;
         top: 0;
@@ -77,23 +96,206 @@
         }
     }
 
-    
+    h1 {
+        text-decoration: none;
+        color: white;
+        font-size: 70px;
+        font-family: 'Cinzel Decorative', cursive;
+        text-shadow: black 2px 2px 2px;
+    }
+
+    h2 {
+        text-decoration: none;
+        color: white;
+        font-size: 40px;
+
+    }
+
+    h3 {
+        text-decoration: none;
+        color: white;
+        font-size: 30px;
+
+    }
+
+    .meny {
+        width: 700px;
+        height: 1500px;
+        margin-left: 25%;
+        margin-top: 50%;
+        box-shadow: rgba(255, 255, 255, 0.56) +px 2px 2px 2px;
+        border-radius: 5px;
+        text-align: center;
+        background-color: transparent;
+        padding: 30px;
+        transition: ease-in-out 0.5s;
+    }
+
+    .meny a {
+        display: grid;
+        margin-top: 15px;
+        font-size: 20px;
+        border: 2px solid whitesmoke;
+        padding: 20px;
+        color: white;
+        text-decoration: none;
+        background-color: transparent;
+        text-align: center;
+        transition: ease-in-out 0.3s;
+    }
+
+    .meny a:hover {
+        transform: scale(1.05);
+        transition: ease-in-out 0.3s;
+    }
+
+    #menyOverskrift {
+        width: 640px;
+        height: 80px;
+        display: grid;
+        display: inline-block;
+        box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+        border-radius: 5px;
+        text-align: center;
+        background-color: transparent;
+        padding: 30px;
+        transition: ease-in-out 0.5s;
+    }
+
+
+    #usynlig {
+        opacity: 0;
+        height: 100px;
+    }
+
+    #backToTop {
+
+        text-decoration: none;
+        margin-left: 45%;
+        border-radius: 5px;
+        color: white;
+        display: inline-block;
+        border: white solid 2px;
+        border-radius: 35px;
+        text-align: center;
+        background-color: transparent;
+        padding: 20px;
+        transition: ease-in-out 0.5s;
+    }
+
+    #backToTop:hover {
+        background-color: black;
+        transition: 0.3s;
+
+    }
+
+
+    /* Responsive styles */
+    @media (max-width: 600px) {
+        .topptekst {
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-top: 5%;
+        }
+
+        .meny {
+            width: 50%;
+            margin-top: 10%;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+        #backToTop {
+            margin-left: 40%;
+        }
+    }
+
+    @media (min-width: 601px) and (max-width: 1024px) {
+        .topptekst {
+            margin-left: 15%;
+            margin-right: 15%;
+            margin-top: 10%;
+        }
+
+        .meny {
+            width: 80%;
+            margin-top: 15%;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+
+        #backToTop {
+            margin-left: 45%;
+        }
+    }
+
+    @media (min-width: 1025px) {
+        .topptekst {
+            margin-left: 25%;
+            margin-right: 25%;
+            margin-top: 10%;
+        }
+
+        .meny {
+            width: 50%;
+            margin-top: 20%;
+            margin-left: 25%;
+            margin-right: 15%;
+        }
+
+        #backToTop {
+            margin-left: 45%;
+        }
+    }
 </style>
 
 
 
 <body>
 
+    <div id="top"></div>
+    <section>
+        <div class="topptekst">
+            <h1>Min Githubside</h1>
+            <h2>IT 2022 - 2023</h2>
+            <h3>Her kan du se alle mine oppgaver</h3>
+            <a href="#menyOverskrift">Klikk Her</a>
+        </div>
+    </section>
+
+    </div>
+
+    <div id="usynlig">
+    </div>
+
+    <div class="meny">
+        <div id="menyOverskrift">
+            <h2>MINE OPPGAVER</h2>
+        </div>
+        <a href="Innleveringsoppgave1/Innleveringsoppgave.html" style="background-color: rgb(0, 0, 0);"> IT Hovedoppgave </a>
+        <a href="ukeplan.html"> Ukeplan </a>
+        <a href="OL.html" style="background-color: rgb(0, 0, 0) ;">OL Ringer</a>
+        <a href="griddemo.html"> Periodesystemet </a>
+        <a href="js1.html" style="background-color: rgb(0, 0, 0) ;"> Kalkulator </a>
+        <a href="js2.html"> Gjett passord </a>
+        <a href="js4.html" style="background-color: rgb(0, 0, 0) ;"> Lotto </a>
+        <a href="TilfeldigHilsen.html">Tilfeldig Hilsen</a>
+        <a href="kvadratTall.html" style="background-color: rgb(0, 0, 0) ;">Kvadrattall</a>
+        <a href="yatzi.html">Yatzzzi</a>
+        <a href="quiz.html" style="background-color: rgb(0, 0, 0) ;">Quizz</a>
+        <a href="blippSpill.html">Spill Blipp</a>
+        <a href="parametre.html" style="background-color: rgb(0, 0, 0) ;">Parametre Oppgaver</a>
+        <a href="visittkort.html">Visittkort</a>
+        <a href="kryptering.html" style="background-color: rgb(0, 0, 0) ;">Krypteringsoppgave</a>
+        <a href="visittkort2.html">Visittkort 2.0</a>
+    </div>
+    <br>
+    <a id="backToTop" href="#top">TILBAKE TIL TOPPEN</a>
+
     <div class="bg"></div>
     <div class="bg bg2"></div>
     <div class="bg bg3"></div>
 
-    <div class="topptekst main">
-        <a href="alleOppgaver.html">Mine Oppgaver</a>
-    </div>
-
-    </div>
-   
 
 </body>
 
