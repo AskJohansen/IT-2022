@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator 2.0</title>
+</head>
+
+<body>
+    <h1 id="overskrift">KALKULATOR</h1>
+    <div id="inputbox">
+        <input type="number" placeholder="skriv inn tall 1" id="forsteTall">
+        <input type="number" placeholder="skriv inn tall 2" id="andreTall">
+    </div>
+    <div id="btnbox">
+        <button id="pluss" onclick="svarPluss()">Pluss</button>
+        <button id="minus" onclick="svarMinus()">Minus</button>
+        <button id="gange" onclick="svarGange()">Gange</button>
+        <button id="dele" onclick="svarDele()">Dele</button>
+    </div>
+    <h2 id="svar"></h2>
+
+    <script>
+        var forsteTall = document.getElementById("forsteTall")
+        var andreTall = document.getElementById("andreTall")
+        var pluss = document.getElementById("pluss")
+        var minus = document.getElementById("minus")
+        var gange = document.getElementById("gange")
+        var dele = document.getElementById("dele")
+        var svar = document.getElementById("svar")
+
+        function svarPluss() {
+            let plussSvar = Number(forsteTall.value) + Number(andreTall.value)
+            svar.innerHTML = plussSvar
+        }
+        function svarMinus() {
+            let minusSvar = Number(forsteTall.value) - Number(andreTall.value)
+            svar.innerHTML = minusSvar
+        }
+        function svarGange() {
+            let gangeSvar = Number(forsteTall.value) * Number(andreTall.value)
+            svar.innerHTML = gangeSvar
+        }
+        function svarDele() {
+            let deleSvar = Number(forsteTall.value) / Number(andreTall.value)
+            svar.innerHTML = deleSvar
+        }
+
+    </script>
+
+    <style>
+        body {
+            background-image: linear-gradient(rgba(111, 111, 255, 0.409),rgba(255, 255, 255, 0.428)), url(https://cdnb.artstation.com/p/assets/images/images/011/931/531/original/pierre-yves-vauzelle-clean.gif?1532161301);
+            width: 100%;
+            height: 597px;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+
+        #inputbox {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        #btnbox {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        #svar {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        #overskrift {
+            display: flex;
+            justify-content: center;
+            margin-top: 15%;
+        }
+    </style>
+</body>
+
+</html>
